@@ -54,7 +54,7 @@ int main()
 	start = clock();
 	quickSort(arr,ARRLEN);
 	end = clock();
-	cout<<"快速排序用时间："<<(double)(end - start) / CLOCKS_PER_SEC<<"(s)"<<endl;
+	cout<<"快速排序用时："<<(double)(end - start) / CLOCKS_PER_SEC<<"(s)"<<endl;
 
 	GetData(arr,ARRLEN);
 
