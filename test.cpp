@@ -14,18 +14,27 @@ struct dis
 	}
 };
 
-void my_sort(int arr[],int len);
+void GetData(int arr[],int len)
+{
+	if(nullptr == arr || len < 2)
+	  return;
+
+	for(int i = 0;i < len; ++i)
+	{
+		arr[i] = rand()%100;
+	}
+}
 
 int main()
 {
 	int arr[ARRLEN] = {0};
 	srand(time(0));
-	for(int i = 0;i < ARRLEN;++i)
-	  arr[i] = rand()%100 + 1;
-
+	
+	GetData(arr,ARRLEN);
 	for_each(arr,arr+ARRLEN,dis<int>());
 	cout<<endl;
-	my_sort(arr,ARRLEN);
+	mergeSort(arr,ARRLEN);
+	//my_sort(arr,ARRLEN);
 	for_each(arr,arr+ARRLEN,dis<int>());
 	cout<<endl;
 

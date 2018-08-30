@@ -3,7 +3,7 @@
 #include <algorithm>
 using namespace std;
 
-#define ARRLEN 100000
+#define ARRLEN 1000000
 
 void GetData(int arr[],int len)
 {
@@ -12,7 +12,7 @@ void GetData(int arr[],int len)
 
 	for(int i = 0;i < len; ++i)
 	{
-		arr[i] = rand();
+		arr[i] = rand()%10000;
 	}
 }
 
@@ -21,26 +21,7 @@ int main()
 	int arr[ARRLEN] = {0};
 	srand(time(0));
 
-	GetData(arr,ARRLEN);
-
-	clock_t start = clock();
-	insertSort(arr,ARRLEN);
-	clock_t end = clock();
-	cout<<"直接插入排序用时:"<<(double)(end - start) / CLOCKS_PER_SEC<<"(s)"<<endl;
-
-	GetData(arr,ARRLEN);
-
-	start = clock();
-	bubbleSort(arr,ARRLEN);
-	end = clock();
-	cout<<"冒泡排序用时："<<(double)(end - start) / CLOCKS_PER_SEC<<"(s)"<<endl;
-
-	GetData(arr,ARRLEN);
-
-	start = clock();
-	selectSort(arr,ARRLEN);
-	end = clock();
-	cout<<"简单选择排序用时："<<(double)(end - start) / CLOCKS_PER_SEC<<"(s)"<<endl;
+	clock_t start,end;
 
 	GetData(arr,ARRLEN);
 
@@ -69,6 +50,13 @@ int main()
 	mergeSort(arr,ARRLEN);
 	end = clock();
 	cout<<"归并排序用时："<<(double)(end - start) / CLOCKS_PER_SEC<<"(s)"<<endl;
+
+	GetData(arr,ARRLEN);
+
+	start = clock();
+	countSort(arr,ARRLEN);
+	end = clock();
+	cout<<"计数排序用时："<<(double)(end - start) / CLOCKS_PER_SEC<<"(s)"<<endl;
 
 	return 0;
 }

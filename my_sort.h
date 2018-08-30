@@ -254,7 +254,7 @@ void my_sort(int arr[],int len)
 	  return;
 
 	srand(time(0));
-	unsigned choose = rand() % 6;
+	unsigned choose = rand() % 7;
 	switch(choose)
 	{
 		case 0:
