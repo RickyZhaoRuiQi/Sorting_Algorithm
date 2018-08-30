@@ -245,7 +245,7 @@ void mergeSort(int arr[],int len)
 	mergeSort(arr,0,len);
 }
 /*
- * 归并排序：O（n），时间复杂度，最好平均和最差都是O（nlogn），稳定算法。
+ * 归并排序：空间复杂度O（n），时间复杂度，最好平均和最差都是O（nlogn），稳定算法。
  */
 
 void my_sort(int arr[],int len)
@@ -300,5 +300,54 @@ void my_sort(int arr[],int len)
 			}
 	}
 }
+
+void countSort(int arr[],int max, int len)
+{
+	int *count = new int[max + 1];
+	int *tmp = new int[len];
+
+	for (int i = 0; i <= max; ++i)
+		count[i] = 0;
+
+	for (int i = 0; i < len; ++i)
+		++count[arr[i]];
+
+	for (int i = 1; i <= max; ++i)
+		count[i] = count[i] + count[i - 1];
+
+	for (int i = len - 1 ; i >= 0; --i)
+	{
+		tmp[count[arr[i]] - 1] = arr[i];
+		--count[arr[i]];
+	}
+
+	for (int i = 0; i < len; ++i)
+	{
+		arr[i] = tmp[i];
+	}
+
+	delete[]count;
+	delete[]tmp;
+}
+
+void countSort(int arr[], int len)
+{
+	if (nullptr == arr || len < 2)
+		return;
+
+	int max = arr[0];
+	for (int i = 0; i < len; ++i)
+	{
+		if (arr[i] < 0)
+			return;
+		if (max < arr[i])
+			max = arr[i];
+	}
+	countSort(arr, max, len);
+}
+
+/*
+ * 计数排序：空间复杂度O（n + k），时间复杂度O（n + k），适用于自然数序列，且最大数小于等于或者比n大的不多的情况
+ */
 
 #endif
